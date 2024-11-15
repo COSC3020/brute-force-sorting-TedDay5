@@ -1,31 +1,31 @@
-function permutationSort(a) {
+function permutationSort(array) {
     var iterations = 0;
-    if (a.length == 0) {
+    if (array.length == 0) {
         return iterations;
     }
-    function permutation(a, firstE) {
-        if (check(a) == true) {
+    function permutation(array, firstE) {
+        if (check(array) == true) {
             return iterations;
         }
         else {
-            for (var secondE = firstE; secondE < a.length; secondE++) {
+            for (var secondE = firstE; secondE < array.length; secondE++) {
                 iterations++;
-                [a[firstE], a[secondE]] = [a[secondE], a[firstE]];
-                permutation(a, firstE + 1);
-                if (check(a) == true) {
+                [array[firstE], array[secondE]] = [array[secondE], array[firstE]];
+                permutation(array, firstE + 1);
+                if (check(array) == true) {
                     return iterations;
                 }
-                [a[secondE], a[firstE]] = [a[firstE], a[secondE]];
+                [array[secondE], array[firstE]] = [array[firstE], array[secondE]];
             }
         }
     }
-    permutation(a, 0);
+    permutation(array, 0);
     return iterations;
 }
 
-function check(a) {
-    for (var n = 0; n < a.length; n++) {
-        if (a[n] < a[n - 1]) {
+function check(array) {
+    for (var n = 0; n < array.length; n++) {
+        if (array[n] < array[n - 1]) {
             return false;
         }
     }
